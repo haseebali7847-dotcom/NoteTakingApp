@@ -3,16 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/addNoteFragment">
+    app:startDestination="@id/viewNotesFragment">
 
-    <fragment
-        android:id="@+id/addNoteFragment"
-        android:name="com.example.notetakingapp.fragments.AddNoteFragment"
-        android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" />
+    <!-- 🟩 View Notes Fragment -->
     <fragment
         android:id="@+id/viewNotesFragment"
         android:name="com.example.notetakingapp.fragments.ViewNotesFragment"
-        android:label="fragment_view_notes"
-        tools:layout="@layout/fragment_view_notes" />
+        android:label="View Notes"
+        tools:layout="@layout/fragment_view_notes">
+
+        <!-- Navigate to Add Note -->
+        <action
+            android:id="@+id/action_viewNotes_to_addNote"
+            app:destination="@id/addNoteFragment" />
+
+        <!-- Navigate to Update Note -->
+        <action
+            android:id="@+id/action_viewNotes_to_updateNote"
+            app:destination="@id/updateNoteFragment" />
+    </fragment>
+
+    <!-- 🟦 Add Note Fragment -->
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.example.notetakingapp.fragments.AddNoteFragment"
+        android:label="Add Note"
+        tools:layout="@layout/fragment_add_note">
+        <action
+            android:id="@+id/action_addNote_to_viewNotes"
+            app:destination="@id/viewNotesFragment" />
+    </fragment>
+
+    <!-- 🟨 Update Note Fragment -->
+    <fragment
+        android:id="@+id/updateNoteFragment"
+        android:name="com.example.notetakingapp.fragments.UpdateNoteFragment"
+        android:label="Update Note"
+        tools:layout="@layout/fragment_update_note">
+        <action
+            android:id="@+id/action_updateNote_to_viewNotes"
+            app:destination="@id/viewNotesFragment" />
+    </fragment>
+
 </navigation>
